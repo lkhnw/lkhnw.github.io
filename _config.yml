@@ -104,4 +104,4 @@ theme: landscape
 deploy:
   type: ""
 #  repository: https://github.com/lkhnw/lkhnw.github.io.git
-# branch: main
+  branch: main
