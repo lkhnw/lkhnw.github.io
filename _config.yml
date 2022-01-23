@@ -102,6 +102,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ""
-  repository: /lkhnw/lkhnw.github.io.git
+  type: git
+  repository: git@github.com:/lkhnw/lkhnw.github.io.git
   branch: main
