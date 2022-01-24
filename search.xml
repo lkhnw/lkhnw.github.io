@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>测试</title>
+    <url>/2022/01/24/test/</url>
+    <content><![CDATA[<p>测试内容</p>
+]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客搭建记录</title>
+    <url>/2022/01/24/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h2 id="搭建博客的原因"><a href="#搭建博客的原因" class="headerlink" title="搭建博客的原因"></a>搭建博客的原因</h2><p>1.职业需求。让others快速了解我。</p>
+<p>2.好看。在搜技术文章时，不止一次链接到别人的好看博客，即喜欢别人的技术又喜欢那好看的博客。</p>
+<p>3.个人需求。从事信安相关工作，规律杂乱，需要大量方便查找的记录。有个博客更能表明IT性。</p>
+<h2 id="搭建博客的过程"><a href="#搭建博客的过程" class="headerlink" title="搭建博客的过程"></a>搭建博客的过程</h2><p>前话：2022年1月初，收到offer。正式面对网安这一行业。学习技术的同时也开始疯狂了解争取熟悉这个圈子，融入这个圈子。</p>
+<p>1、在学习过程中，发觉上述原因，产生了搭建博客的想法。</p>
+<p>2、当时我沉迷于打vulnhub，并不想抽出时间去做不确定的事。（对该博客各个搭建过程都不熟，以及后续问题等）于是我便找向我的同学及老乡@lkzc。嘿，直接就想到了他可能搭过博客。（果然如此）</p>
+<p>3、1月20日左右，同学回家了，而我在昨天下午找到空闲。去他家玩，顺便请他帮我搭建博客。</p>
+<p>4、一顿介绍和操作，我对博客搭建过程、主题选择、github子域名部署静态网页、域名购买等，有了点了解。</p>
+<p>5、但遗憾的是，四个小时，却卡在了Travis CI于github编译脚本执行失败。</p>
+<p>5、晚，我回家自己琢磨。由于不熟而踩了些坑，花了四个小时，在实践中总结经验，终于完成了它。</p>
+<h2 id="Hexo部署于github"><a href="#Hexo部署于github" class="headerlink" title="Hexo部署于github"></a>Hexo部署于github</h2><p>转<a href="https://www.bilibili.com/video/BV1mU4y1j72n?p=1">【2021最新版】保姆级Hexo+github搭建个人博客_哔哩哔哩_bilibili</a></p>
+<p>这个视频里有hexo部署于github的详细教程，但不是上传源文件自动编译。</p>
+<h4 id="github-action-ci脚本编译hexo源文件"><a href="#github-action-ci脚本编译hexo源文件" class="headerlink" title="github action ci脚本编译hexo源文件"></a>github action ci脚本编译hexo源文件</h4><p><a href="https://www.cnblogs.com/deppwang/p/12326906.html">使用 GitHub Actions 实现 Hexo 博客自动部署 - DeppWXQ - 博客园 (cnblogs.com)</a></p>
+<p>这里有可用的脚本，具体的教程和bug解决方案。很不错。但我依旧因为个人懵，而卡主了。</p>
+<p>1.github对自动化脚本支持密码远程登入。密码当然不能写在脚本里，脚本开源。要放在github-仓库-setting-secret里，这里可以设置secret变量，被脚本使用。所以secret变量名和值要对。因为他的脚本使用的变量是 secrets.DEPLOY_KEY 。所以secret名必须是DEPLOY_KEY。弄懂后，都不知道自己怎么会卡在这里。</p>
+<p>2.结合上面两视频的时候发现，hexo源文件的_coonfig.yml里，deploy里设置需要再修改，原：repository：<a href="https://github.com:仓库位置。改成">https://github.com:仓库位置。改成</a> repository: <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a>:仓库位置。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h4 id="相关github命令"><a href="#相关github命令" class="headerlink" title="相关github命令"></a>相关github命令</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init #于本地当前位置，初始化成本地仓库</span><br><span class="line">git add . #将当前目录下的文件添加进本地仓库，‘.’可以换成其它文件名</span><br><span class="line">git commit -m &quot;提交和提交信息&quot; #提交到本地仓库必须的过程</span><br><span class="line">git remote origin xxx #xxx,是github仓库地址，形如https://github.com/xx/xx.git。只需要设置一次。</span><br><span class="line">git branch xxx #于本地创建名为xxx的分支</span><br><span class="line">git branch -a #查看所有分支</span><br><span class="line">git checkout xxx #切换到xxx分支</span><br><span class="line">git push origin xxx # xxx是分支名，提交到remotes/origin/xxx，也就是上传到远程仓库的一个分支</span><br></pre></td></tr></table></figure>
+
+<h4 id="相关hexo命令"><a href="#相关hexo命令" class="headerlink" title="相关hexo命令"></a>相关hexo命令</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init file #在本地创建file文件夹，生成初始的hexo源文件</span><br><span class="line">hexo g #generate的缩写，编译</span><br><span class="line">hexo s #service吧，启动hexo服务</span><br><span class="line">hexo d #deploy，部署静态网页文件，按配置，将生成的静态网页文件部署。</span><br></pre></td></tr></table></figure>
+
+<h4 id="域名设置CNAME"><a href="#域名设置CNAME" class="headerlink" title="域名设置CNAME"></a>域名设置CNAME</h4><p>在hexo的源文件的source下新建CNAME，内容为自己的域名。</p>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+      </tags>
+  </entry>
+</search>
